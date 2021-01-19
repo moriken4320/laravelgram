@@ -4,17 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Like extends Model
 {
-    // belongsToの設定
+    // belongsTo設定
     public function user()
     {
         return $this->belongsTo('App\User');
     }
 
-    // hasManyの設定
-    public function likes()
+    // belongsTo設定
+    public function post()
     {
-        return $this->hasMany('App\Like');
+        return $this->belongsTo('App\Post');
     }
 }
