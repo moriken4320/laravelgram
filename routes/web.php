@@ -18,3 +18,6 @@ Route::get('/', 'PostsController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// ユーザー詳細画面
+Route::get('/users/{user_id}', 'UsersController@show');
