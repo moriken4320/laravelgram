@@ -19,7 +19,10 @@ class PostsController extends Controller
     
     public function index()
     {
-        return view('post.index');
+        // 最新の投稿データを10個取得
+        $posts = Post::limit(10)->orderBy('created_at','desc')->get();
+
+        return view('post.index', ['posts'=>$posts]);
     }
 
     public function new()

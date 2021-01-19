@@ -4,18 +4,31 @@
 
 @section('content')
 
+@foreach ($posts as $post)
+<div class="col-md-8 col-md-2 mx-auto">
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <a class="no-text-decoration" href="/users/{{ $post->user->id }}">
+          @if ($post->user->profile_photo)
+              <img class="post-profile-icon round-img" src="{{ asset('storage/user_images/' . $post->user->profile_photo) }}"/>
+          @else
+              <img class="post-profile-icon round-img" src="{{ asset('/images/blank_profile.png') }}"/>
+          @endif
+        </a>
+        <a class="black-color no-text-decoration" title="{{ $post->user->name }}" href="/users/{{ $post->user->id }}">
+          <strong>{{ $post->user->name }}</strong>
+        </a>
+      </div>
 
-{{-- サインアウトリンク --}}
-<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-  サインアウト<br />
-</a>
-<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-  {{ csrf_field() }}
-</form>
-{{-- //サインアウトリンク --}}
+      <a href="/users/{{ $post->user->id }}">
+        <img src="/storage/post_images/{{ $post->id }}.jpg" class="card-img-top" />
+      </a>
 
-<p>このページは仮のトップページです</p>
 
-<a href="#" class="btn btn-success">仮のボタンです</a>
+    </div>
+  </div>
+</div>
+@endforeach
 
 @endsection
