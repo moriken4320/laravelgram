@@ -1,5 +1,6 @@
 @foreach ($post->comments as $comment)
-<div class="mb-2" @if (Auth::Check() && $comment->user->id == Auth::user()->id)
+<div class="mb-2">
+  @if (Auth::Check() && $comment->user->id == Auth::user()->id)
   <a class="delete-comment" data-remote="true" rel="nofollow" data-method="delete"
     href="/comments/{{ $comment->id }}"></a>
   @endif
