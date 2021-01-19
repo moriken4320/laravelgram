@@ -38,4 +38,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Like');
     }
+
+    // hasManyの設定
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }
