@@ -6,7 +6,7 @@
   <div class="card devise-card">
     <div class="form-wrap">
       <div class="form-group text-center">
-        <h2 class="logo-img mx-auto"></h2>
+        <a class="logo-img mx-auto" href="/"></a>
       </div>
       <form class="new_user" id="new_user" action="{{ route('login') }}" accept-charset="UTF-8" method="post">
         {{ csrf_field() }}

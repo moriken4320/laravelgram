@@ -23,6 +23,7 @@
   width: 180px;
   background-size: 160px;
   background-size: 180px !important;
+  display: block;
 }
 .form-control {
   border: 1px solid #dcdfe6;

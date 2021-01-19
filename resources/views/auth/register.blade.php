@@ -5,7 +5,7 @@
   <div class="card devise-card">
     <div class="form-wrap">
       <div class="form-group text-center">
-        <h2 class="logo-img mx-auto"></h2>
+        <a class="logo-img mx-auto" href="/"></a>
         <p class="text-secondary">友達の写真や動画をチェックしよう</p>
       </div>
       <form method="POST" action="{{ route('register') }}">
