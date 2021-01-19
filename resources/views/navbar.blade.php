@@ -11,7 +11,7 @@
               <a class="btn btn-primary" href="/posts/new">投稿</a>
             </li>
             <li>
-              <a class="nav-link commonNavIcon profile-icon" href="#"></a>
+              <a class="nav-link commonNavIcon profile-icon" href="/users/{{ Auth::user()->id }}"></a> {{-- Auth::user()でログイン中のユーザーを取得できる --}}
             </li>
           </ul>
         </div>
