@@ -53,4 +53,15 @@ class PostsController extends Controller
         // 「/」 ルートにリダイレクト
         return redirect('/');
     }
+
+    public function destroy($post_id)
+    {
+        $post = Post::find($post_id);
+        // 投稿者本人であれば削除
+        if (Auth::user()->id == $post->user_id)
+        {
+            $post->delete();
+        }
+        return redirect('/');
+    }
 }
