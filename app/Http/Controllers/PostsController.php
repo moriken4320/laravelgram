@@ -19,7 +19,10 @@ class PostsController extends Controller
     
     public function index()
     {
-        return view('post.index');
+        // 最新の投稿データを10個取得
+        $posts = Post::limit(10)->orderBy('created_at','desc')->get();
+
+        return view('post.index', ['posts'=>$posts]);
     }
 
     public function new()
@@ -48,6 +51,17 @@ class PostsController extends Controller
         $request->photo->storeAs('public/post_images', $post->id . '.jpg');
         
         // 「/」 ルートにリダイレクト
+        return redirect('/');
+    }
+
+    public function destroy($post_id)
+    {
+        $post = Post::find($post_id);
+        // 投稿者本人であれば削除
+        if (Auth::user()->id == $post->user_id)
+        {
+            $post->delete();
+        }
         return redirect('/');
     }
 }
