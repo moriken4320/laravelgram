@@ -6,9 +6,11 @@
 <div class="profile-wrap">
   <div class="row">
     <div class="col-md-4 text-center">
-      @if ($user->profile_photo)
+      @if ($user->image)
         <p>
-          <img class="round-img" src="{{ asset('storage/user_images/' . $user->profile_photo) }}"/>
+          {{-- base64という形式の画像データを表示する --}}
+          <img class="round-img" src="data:image/png;base64,{{ $user->image }}" />
+          {{-- <img class="round-img" src="{{ asset('storage/user_images/' . $user->profile_photo) }}"/> --}}
         </p>
         @else
           <img class="round-img" src="{{ asset('/images/blank_profile.png') }}"/>

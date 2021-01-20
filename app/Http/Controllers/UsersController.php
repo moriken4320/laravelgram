@@ -48,8 +48,10 @@ class UsersController extends Controller
         $user = Auth::user();
         $user->name = $request->user_name;
         if ($request->user_profile_photo !=null) {
-            $request->user_profile_photo->storeAs('public/user_images', $user->id . '.jpg');
-            $user->profile_photo = $user->id . '.jpg';
+            // アップロードされた画像ファイルをbase64という形式に変換
+            $user->image = base64_encode(file_get_contents($request->user_profile_photo));
+            // $request->user_profile_photo->storeAs('public/user_images', $user->id . '.jpg');
+            // $user->profile_photo = $user->id . '.jpg';
         }
         $user->password = bcrypt($request->user_password);
         $user->save();

@@ -13,10 +13,14 @@
           {{csrf_field()}} 
           <div class="form-group">
             <label for="user_profile_photo">プロフィール写真</label><br>
-                @if ($user->profile_photo)
+                @if ($user->image)
                     <p>
-                        <img src="{{ asset('storage/user_images/' . $user->profile_photo) }}" alt="avatar" />
+                      {{-- base64という形式の画像データを表示する --}}
+                      <img class="round-img" src="data:image/png;base64,{{ $user->image }}"  alt="avatar"/>
+                      {{-- <img src="{{ asset('storage/user_images/' . $user->profile_photo) }}" alt="avatar" /> --}}
                     </p>
+                @else
+                    <img class="round-img" src="{{ asset('/images/blank_profile.png') }}"/>
                 @endif
             <input type="file" name="user_profile_photo" accept="image/jpeg,image/gif,image/png" />
           </div>

@@ -11,7 +11,9 @@
       <div class="card-header align-items-center d-flex">
         <a class="no-text-decoration" href="/users/{{ $post->user->id }}">
           @if ($post->user->profile_photo)
-              <img class="post-profile-icon round-img" src="{{ asset('storage/user_images/' . $post->user->profile_photo) }}"/>
+              {{-- base64という形式の画像データを表示する --}}
+              <img class="post-profile-icon round-img" src="data:image/png;base64,{{ $post->user->image }}" />
+              {{-- <img class="post-profile-icon round-img" src="{{ asset('storage/user_images/' . $post->user->profile_photo) }}"/> --}}
           @else
               <img class="post-profile-icon round-img" src="{{ asset('/images/blank_profile.png') }}"/>
           @endif
@@ -20,9 +22,13 @@
           <strong>{{ $post->user->name }}</strong>
         </a>
       </div>
-
+      <div>
+        <span>{{ $post->caption }}</span>
+      </div>
       <a href="/users/{{ $post->user->id }}">
-        <img src="/storage/post_images/{{ $post->id }}.jpg" class="card-img-top" />
+        {{-- base64という形式の画像データを表示する --}}
+        <img src="data:image/png;base64,{{ $post->image }}" class="card-img-top" />
+        {{-- <img src="/storage/post_images/{{ $post->id }}.jpg" class="card-img-top" /> --}}
       </a>
 
       @if (Auth::check())
@@ -40,10 +46,6 @@
           </div>
           <div id="like-text-post-{{ $post->id }}">
             @include('post.like_text')
-          </div>
-          <div>
-            <span><strong>{{ $post->user->name }}</strong></span>
-            <span>{{ $post->caption }}</span>
           </div>
         </div>
 
