@@ -32,7 +32,7 @@
               </div>
             </div>
             <div class="mb-3">
-              <input type="file" name="photo" accept="image/jpeg,image/gif,image/png" />
+              <input type="file" name="photo" accept="image/jpeg,image/gif,image/png" id="post_image" />
             </div>
             <input type="submit" name="commit" value="投稿する" class="btn btn-primary" data-disable-with="投稿する" />
           </form>
