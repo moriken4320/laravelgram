@@ -10,7 +10,7 @@
     <div class="card">
       <div class="card-header align-items-center d-flex">
         <a class="no-text-decoration" href="/users/{{ $post->user->id }}">
-          @if ($post->user->profile_photo)
+          @if ($post->user->image)
               {{-- base64という形式の画像データを表示する --}}
               <img class="post-profile-icon round-img" src="data:image/png;base64,{{ $post->user->image }}" />
               {{-- <img class="post-profile-icon round-img" src="{{ asset('storage/user_images/' . $post->user->profile_photo) }}"/> --}}
